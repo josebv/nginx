@@ -1,8 +1,29 @@
 ---
+  - name: install dependencies
+    yum: name={{item}} state=present
+    with_items:
+      - gcc
+      - libyaml-devel
+      - glibc-headers
+      - autoconf
+      - gcc-c++
+      - glibc-devel
+      - automake
+      - libtool
+      - bison
+      - nodejs
+
   - name: install nginx repo
     copy:
       src=nginx.repo
       dest=/etc/yum.repos.d/nginx.repo
-#  - name: install nginx package
-#    yum: name=nginx state=present
-#
+
+  - copy: src=nginx.pp dest=/tmp/nginx.pp
+  - copy: src=nginx.te dest=/tmp/nginx.te
+
+  - name: copy install script
+    copy: src=install_ruby.sh dest=/tmp/install_ruby.sh mode=0755
+
+  - name: run install script
+    shell: sudo -i /tmp/install_ruby.sh
+

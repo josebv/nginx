@@ -1,0 +1,11 @@
+
+module nginx 1.0;
+
+require {
+	type httpd_t;
+	type var_t;
+	class file getattr;
+}
+
+#============= httpd_t ==============
+allow httpd_t var_t:file getattr;
