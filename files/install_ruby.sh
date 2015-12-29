@@ -17,8 +17,8 @@ VERSION=2.2.1
 /usr/local/rvm/bin/rvm use $VERSION --default 
 sudo -u centos -i /usr/local/rvm/bin/rvm use --default $VERSION
 
-/usr/local/rvm/rubies/ruby-2.2.1/bin/gem install rails
-/usr/local/rvm/rubies/ruby-2.2.1/bin/gem install bundler
+/usr/local/rvm/rubies/ruby-$VERSION/bin/gem install rails
+/usr/local/rvm/rubies/ruby-$VERSION/bin/gem install bundler
 
 # once ruby 2.2.1 has been set as default, install passenger
 curl --fail -sSLo /etc/yum.repos.d/passenger.repo https://oss-binaries.phusionpassenger.com/yum/definitions/el-passenger.repo
